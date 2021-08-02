@@ -91,3 +91,19 @@ book_3.author.remove(author)
 
 
 11. Query: Add the 5th author as one of the authors of the 2nd book
+
+author = Authors.objects.get(id=5)
+book_two = Books.objects.get(id=2)
+author.books.add(book_two)
+
+
+12. Query: Find all the books that the 3rd author is part of
+
+author = Authors.objects.get(id=3)
+author.books.all()
+
+
+13. Query: Find all the authors that contributed to the 5th book
+
+book_five = Books.objects.get(id=5)
+book_five.author.all()
