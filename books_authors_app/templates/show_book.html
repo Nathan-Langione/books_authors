@@ -22,7 +22,7 @@
             <div class="add_author">
                 <form action="/add_author" method="post">
                     {% csrf_token %}
-                    <select name="authors">
+                    <select name="author_id">
                         {% for author in authors %}
                         <option name="author_id" value="{{author.id}}">{{author.first_name}} {{author.last_name}} {{author.id}}</option>
                         {% endfor %}

@@ -69,7 +69,7 @@ def add_author(request):
         author = Authors.objects.get(id=author_id)
         author.books.add(book)
         #this is not working even though the commands work in the shell and i seem to be passing the right values
-    return redirect("/")
+    return redirect(request.META['HTTP_REFERER'])
 
 def add_book(request):
     if request.method=="POST":
@@ -84,4 +84,4 @@ def add_book(request):
         book = Books.objects.get(id=book_id)
         book.author.add(author)
         #this is not working even though the commands work in the shell and i seem to be passing the right values
-    return redirect("authors")
+    return redirect(request.META['HTTP_REFERER'])
