@@ -2,20 +2,23 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Books</title>
+        <first_name>Authors</first_name>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">    
     </head>
     <body>
         <div>
-            <h1> Add a Book</h1>
-            <form action="/create_book" method="post">
+            <h1> Add an Authors</h1>
+            <form action="/create_author" method="post">
                 {% csrf_token %}
                 <p>
-                    Title: <input name="title" type="text">
+                    first_name: <input name="first_name" type="text">
                 </p>
                 <p>
-                    Description: <input name="description" type="text">
+                    last_name: <input name="last_name" type="text">
+                </p>
+                <p>
+                    notes: <input name="notes" type="text">
                 </p>
                 <button type="submit">Add</button>
             </form>     
@@ -24,15 +27,14 @@
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Action</th>
                 </tr>
-                {% for book in all_books %}
+                {% for author in all_authors %}
                 <tr>
-                    <td>{{book.id}}</td>
-                    <td>{{book.title}}</td>
-                    <td>{{book.description}}</td>
-                    <td><a href="show_book/{{book.id}}">View</a></td>
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href="show_author/{{author.id}}">View</a></td>
                     {% endfor %}
                 </tr>
             </table>

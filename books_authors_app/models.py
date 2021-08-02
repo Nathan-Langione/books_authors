@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 class Books(models.Model):
     title = models.CharField(max_length=255)
-    desc = models.TextField()
+    description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __repr__(self):
-        return f"User object: {self.title} {self.desc} ({self.id})"
+        return f"User object: {self.title} {self.description} ({self.id})"
 
 
 class Authors(models.Model):
