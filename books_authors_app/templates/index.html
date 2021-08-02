@@ -16,12 +16,12 @@
                     <th>last Name</th>
                     <th> books</th>
                 </tr>
-                {% for user in all_authors %}
+                {% for author in all_authors %}
                 <tr>
-                    <td>{{user.id}}</td>
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.last_name}}</td>
-                    <td>{% for book in user.books.all %}
+                    <td>{{author.id}}</td>
+                    <td>{{author.first_name}}</td>
+                    <td>{{author.last_name}}</td>
+                    <td>{% for book in author.books.all %}
                         {{book.title}},
                         {% endfor %}
                     </td>
