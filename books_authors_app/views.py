@@ -42,6 +42,7 @@ def create_author(request):
         new_author.save()
     return redirect("/authors")
 
+""" Render page for a book """
 def show_book(request, id):
     context = {
         "book": Books.objects.get(id=id),    
@@ -49,6 +50,7 @@ def show_book(request, id):
     }
     return render(request,'show_book.html', context)
 
+""" Render page for an author """
 def show_author(request, id):
     context = {
         "author": Authors.objects.get(id=id),    
@@ -56,6 +58,7 @@ def show_author(request, id):
     }
     return render(request,'show_author.html', context)
 
+""" Adds author to a book """
 def add_author(request):
     if request.method=="POST":
         for key, value in request.POST.items():
@@ -71,6 +74,7 @@ def add_author(request):
         #this is not working even though the commands work in the shell and i seem to be passing the right values
     return redirect(request.META['HTTP_REFERER'])
 
+""" adds book to an author """
 def add_book(request):
     if request.method=="POST":
         for key, value in request.POST.items():
@@ -78,10 +82,10 @@ def add_book(request):
             # print(f'Key: {key}') in Python >= 3.7
             print('Value %s' % (value) )
             # print(f'Value: {value}') in Python >= 3.7 
-        book_id = request.POST.get('book_id')
-        author_id = request.POST.get('author_id')
-        author = Authors.objects.get(id=author_id)
-        book = Books.objects.get(id=book_id)
+        #book_id = request.POST.get('book_id')
+        #author_id = request.POST.get('author_id')
+        author = Authors.objects.get(id=request.POST.get('author_id'))
+        book = Books.objects.get(id=request.POST.get('book_id'))
         book.author.add(author)
         #this is not working even though the commands work in the shell and i seem to be passing the right values
     return redirect(request.META['HTTP_REFERER'])

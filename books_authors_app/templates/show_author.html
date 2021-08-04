@@ -19,7 +19,8 @@
                 {% endfor %}
             </p>
             </div>
-            <div class="add_author">
+            <div>
+                <!-- add book to author -->
                 <form action="/add_book" method="post">
                     {% csrf_token %}
                     <select name="book_id">
